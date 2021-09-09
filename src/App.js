@@ -19,7 +19,7 @@ function App() {
     useEffect(() => {
         const callApi = async () => {
             if (submit) {
-                const apiKey = "8320f2058c2e90c90f3bb97daf2ee54f";
+                const apiKey = process.env.REACT_APP_WEATHER_API_KEY;
                 const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}`;
                 const response = await fetch(url);
                 const result = await response.json();
@@ -28,7 +28,7 @@ function App() {
                 getSubmit(false);
 
                 if (result.cod === "404") {
-                    addError(true);
+                    addError(true);result
                 } else {
                     addError(false);
                 }
